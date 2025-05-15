@@ -57,7 +57,7 @@ const loginUser=asyncHandler (async (req, res) => {
             }
         },process.env.JWT_SECRET,
         {
-            expiresIn:'1M'});  
+            expiresIn:'15M'});  
         res.status(200).json({ accessToken });
         }else{
             res.status(401);
@@ -73,7 +73,7 @@ const loginUser=asyncHandler (async (req, res) => {
 //@access Private
 const getCurrentUser=asyncHandler (async (req, res) => {
     // Handle fetching current user logic here
-    res.status(200).json({ message: 'Current user data' });
+    res.status(200).json(req.user);
 });
 
 module.exports = { registerUser , loginUser, getCurrentUser };
